@@ -2,13 +2,15 @@
 This is a small project for following along the "An Incremental Approach to
 Compiler Construction" paper by Abdulaziz Ghuloum.
 
+http://scheme2006.cs.uchicago.edu/11-ghuloum.pdf
+
 The compiler implementation is written in Rust here instead of in Scheme, with
 a driver program in C.
 
 ## Dependencies
-- Cargo (for building Rust)
-- GCC C compiler
-- Make
+- [Cargo](https://www.rust-lang.org/learn/get-started)
+- [GCC](https://gcc.gnu.org/)
+- [GNU Make](https://www.gnu.org/software/make/)
 
 # Build
 To build the compiler, simply run
@@ -23,6 +25,22 @@ can be built using the Makefile:
 
 ```
 make
+```
+
+# Run
+
+The compiler can be run from cargo, with arguments fed after a double dash `--`:
+
+```
+cargo run -- <args>
+```
+
+The `program.s` output from the compiler is linked directly into the runtime
+C-program, so to run the program after compiling with Make just start the
+driver:
+
+```
+./build/driver
 ```
 
 An example of a single line for regular compilation and execution:
