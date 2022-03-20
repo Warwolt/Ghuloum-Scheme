@@ -1,2 +1,3 @@
-main: src/main.c src/program.s
-	gcc $^ -o build/$@
+driver: src/driver.c build/program.s
+	@mkdir build -p
+	@gcc $^ -o build/$@
