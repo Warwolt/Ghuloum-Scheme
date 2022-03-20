@@ -28,7 +28,6 @@ make
 ```
 
 # Run
-
 The compiler can be run from cargo, with arguments fed after a double dash `--`:
 
 ```
