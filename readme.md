@@ -24,3 +24,9 @@ can be built using the Makefile:
 ```
 make
 ```
+
+An example of a single line for regular compilation and execution:
+
+```
+cargo run -- <args> && make && ./build/driver
+```
