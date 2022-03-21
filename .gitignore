@@ -1,6 +1,11 @@
 build/*
 
 
+# python
+__pycache__/
+*.py[cod]
+*$py.class
+
 # Added by cargo
 
 /target
