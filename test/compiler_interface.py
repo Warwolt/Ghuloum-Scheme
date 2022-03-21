@@ -1,4 +1,3 @@
-from optparse import Option
 import subprocess
 import os
 from typing import Optional
