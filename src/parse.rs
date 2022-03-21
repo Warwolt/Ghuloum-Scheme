@@ -1,8 +1,6 @@
 use crate::ast::Immediate;
 
-pub fn parse_immediate_value(args: &Vec<String>) -> Option<Immediate> {
-    let input = &args[1];
-
+pub fn parse_immediate_value(input: &String) -> Option<Immediate> {
     /* Parse booleans */
     if input == "#t" {
         return Some(Immediate::Boolean(true));
