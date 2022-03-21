@@ -9,7 +9,7 @@ mod parse;
 use ast::Immediate;
 
 // TODO
-// [ ] Add call to SetConsoleMode with ENABLE_VIRTUAL_TERMINAL_INPUT arg
+// [ ] Add call to SetConsoleMode with ENABLE_VIRTUAL_TERMINAL_INPUT arg on Windows
 
 fn main() {
     let args: Vec<String> = env::args().collect();

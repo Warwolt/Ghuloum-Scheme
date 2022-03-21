@@ -72,6 +72,8 @@ int main() {
 
         default:
             printf("unknown type tag %d!\n", typed_val.type);
-            break;
+            return 1;
     }
+
+    return 0;
 }

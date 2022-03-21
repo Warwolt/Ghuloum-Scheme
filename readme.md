@@ -11,6 +11,8 @@ a driver program in C.
 - [Cargo](https://www.rust-lang.org/learn/get-started)
 - [GCC](https://gcc.gnu.org/)
 - [GNU Make](https://www.gnu.org/software/make/)
+- [Python 3](https://www.python.org/downloads/)
+- [Pytest](https://docs.pytest.org/)
 
 # Build
 To build the compiler, simply run
@@ -46,4 +48,13 @@ An example of a single line for regular compilation and execution:
 
 ```
 cargo run -- <args> && make && ./build/driver
+```
+
+# Test
+To run the python based integration tests that checks that source text gets
+compiled into a binary with expected behavior use:
+
+
+```
+py -m pytest test
 ```
