@@ -22,13 +22,13 @@ pub fn parse_immediate_value(args: &Vec<String>) -> Option<Immediate> {
         let tail = &input[2..];
         if tail.is_ascii() {
             if ["\t", "\r", "\n"].contains(&tail) {
-                let c = tail.parse::<char>().unwrap();
-                return Some(Immediate::Character(c as i32));
+                let c = tail.parse::<char>().unwrap() as u8;
+                return Some(Immediate::Character(c));
             }
 
             if tail.len() == 1 {
-                let c = tail.chars().next().unwrap();
-                return Some(Immediate::Character(c as i32));
+                let c = tail.chars().next().unwrap() as u8;
+                return Some(Immediate::Character(c));
             }
         }
     }

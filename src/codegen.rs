@@ -26,23 +26,17 @@ pub fn emit_entry_point() -> String {
 pub fn emit_boolean(val: bool) -> String {
     let mut text = String::new();
 
-    // add type information to immediate
-    let shifted_val = BOOLEAN_TAG | ((val as i32) << BOOLEAN_SHIFT);
-
-    writeln!(&mut text, "    movl    ${}, %eax", shifted_val);
+    writeln!(&mut text, "    movl    ${}, %eax", boolean_immediate(val));
     writeln!(&mut text, "    ret");
 
     text
 }
 
 #[allow(unused_must_use)]
-pub fn emit_character(val: i32) -> String {
+pub fn emit_character(val: u8) -> String {
     let mut text = String::new();
 
-    // add type information to immediate
-    let shifted_val = CHARACTER_TAG | ((val as i32) << CHARACTER_SHIFT);
-
-    writeln!(&mut text, "    movl    ${}, %eax", shifted_val);
+    writeln!(&mut text, "    movl    ${}, %eax", character_immediate(val));
     writeln!(&mut text, "    ret");
 
     text
@@ -52,10 +46,7 @@ pub fn emit_character(val: i32) -> String {
 pub fn emit_fixint(val: i32) -> String {
     let mut text = String::new();
 
-    // add type information to immediate
-    let shifted_val = val << FIXNUM_SHIFT;
-
-    writeln!(&mut text, "    movl    ${}, %eax", shifted_val);
+    writeln!(&mut text, "    movl    ${}, %eax", fixint_immediate(val));
     writeln!(&mut text, "    ret");
 
     text
@@ -69,4 +60,16 @@ pub fn emit_empty_list() -> String {
     writeln!(&mut text, "    ret");
 
     text
+}
+
+fn boolean_immediate(val: bool) -> i32 {
+    BOOLEAN_TAG | ((val as i32) << BOOLEAN_SHIFT)
+}
+
+fn character_immediate(val: u8) -> i32 {
+    CHARACTER_TAG | ((val as i32) << CHARACTER_SHIFT)
+}
+
+fn fixint_immediate(val: i32) -> i32 {
+    val << FIXNUM_SHIFT
 }

@@ -1,6 +1,6 @@
 pub enum Immediate {
     Boolean(bool),
-    Character(i32),
+    Character(u8),
     Number(i32),
     EmptyList,
 }
