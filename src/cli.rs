@@ -50,24 +50,18 @@ impl Parser {
     }
 
     pub fn print_usage(&self) {
-        self.print_usage_impl(false);
-    }
-
-    pub fn print_help(&self) {
-        self.print_usage_impl(true);
-    }
-
-    fn print_usage_impl(&self, print_help_part: bool) {
         let exe_name = std::path::Path::new(&self.args[0]).file_name().unwrap();
         println!(
             "usage: {} [<source-file>] [-h | --help] [--text <source-text>]",
             exe_name.to_str().unwrap()
         );
-        if print_help_part {
-            println!("");
-            println!("<source-file>             compiles <source-file>");
-            println!("-h | --help               prints this help message");
-            println!("--src <source-text>       directly compiles the argument <source-text>");
-        }
+    }
+
+    pub fn print_help(&self) {
+        self.print_usage();
+        println!("");
+        println!("<source-file>             compiles <source-file>");
+        println!("-h | --help               prints this help message");
+        println!("--src <source-text>       directly compiles the argument <source-text>");
     }
 }
