@@ -6,7 +6,7 @@ COMPILER = "target/debug/ghuloum.exe"
 DRIVER = "build/driver"
 
 
-def run_program(source: str) -> Optional[str]:
+def run_program(source: str) -> str:
     """
     Takes the argument `source` and feeds it to the compiler, and if the
     compilation succeeds, runs the driver program
@@ -24,7 +24,7 @@ def run_program(source: str) -> Optional[str]:
     if compiler_proc.returncode != 0:
         print(("[%s] compilation failed with message:") % script_name)
         print(compiler_proc.stdout)
-        return None
+        raise Exception("Compilation terminated with error")
 
     make_proc = subprocess.run(
         ["make"], capture_output=True, text=True
@@ -33,7 +33,7 @@ def run_program(source: str) -> Optional[str]:
     if make_proc.returncode != 0:
         print(("[%s] makefile failed with message:") % script_name)
         print(make_proc.stdout)
-        return None
+        raise Exception("Make terminated with error")
 
     driver_proc = subprocess.run([DRIVER], capture_output=True, text=True)
     driver_output = driver_proc.stdout
@@ -41,6 +41,6 @@ def run_program(source: str) -> Optional[str]:
     if driver_proc.returncode != 0:
         print(("[%s] driver failed with message:") % script_name)
         print(driver_proc.stdout)
-        return None
+        raise Exception("Driver program terminated with error")
 
     return driver_output.strip()

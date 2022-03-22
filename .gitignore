@@ -5,6 +5,7 @@ build/*
 __pycache__/
 *.py[cod]
 *$py.class
+prof/
 
 # Added by cargo
 
